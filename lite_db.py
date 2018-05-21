@@ -6,7 +6,7 @@ Usage:    python lite_db.py command [arg1, ... ]
    commands:
     	create -- create new database vendors.db.
     	show   -- show contents of database.
-    	add    -- add row to database.  Requires 3 args (name, descrip, rating).
+    	add    -- add or update row to/in database.  Requires 5 args (date, trans, symbol, qty, price).
     	delete -- remove row from database.  Requires 1 arg (name).
    examples:
     python lite_db.py create
@@ -63,18 +63,9 @@ def showdb():
 
 def showdb1(cursor):
     cursor.execute("select * from vendors order by symbol")
-#    hr()
     description = cursor.description
-#    print description
-#    print 'description:'
-#    for rowdescription in description:
-#        print '    %s' % (rowdescription, )
     hr()
     rows = cursor.fetchall()
-#    print rows
-#    print 'rows:'
-#    for row in rows:
-#        print '    %s' % (row, )
     hr()
     print 'content:'
     for row in rows:
