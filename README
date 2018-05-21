@@ -2,3 +2,51 @@
 #Lite DB based on SQLite3 and Python 2.7
 #            lite version for testing purposes to creeate private DB's
 #
+support@support-Lenovo-Z50-70:~/Python/lite_db$ python lite_db.py
+
+Perform operations on sqlite3 (vendors) database.
+Usage:    python lite_db.py command [arg1, ... ]
+   commands:
+    	create -- create new database vendors.db.
+    	show   -- show contents of database.
+    	add    -- add or update row to/in database.  Requires 5 args (date, trans, symbol, qty, price).
+    	delete -- remove row from database.  Requires 1 arg (name).
+   examples:
+    python lite_db.py create
+    python lite_db.py show
+    python lite_db.py add 2006-01-05 BUY IBM 100.0 35.14
+    python lite_db.py delete IBM
+
+~/Python/lite_db$ python lite_db.py create
+Action: create table vendors (date text, trans text, symbol text, qty text, price text)
+Action q2: "insert into vendors (date, trans, symbol, qty, price) values ('2006-01-05', 'BUY','RHAT', '100.0',' 35.14')"
+Action q2: "insert into vendors (date, trans, symbol, qty, price) values ('2006-03-28', 'BUY','IBM', '1000.0',' 45.0')"
+Action q2: "insert into vendors (date, trans, symbol, qty, price) values ('2006-04-05', 'BUY','MSFT', '1000.0',' 72.0')"
+Action q2: "insert into vendors (date, trans, symbol, qty, price) values ('2006-04-06', 'SELL','IBM', '500.0',' 53.0')"
+Action q2: "insert into vendors (date, trans, symbol, qty, price) values ('2018-09-08', 'GET','APPLE', '2000.0',' 35.0')"
+Action q2: "insert into vendors (date, trans, symbol, qty, price) values ('2017-02-07', 'POST','ORACLE', '4000.0',' 22.0')"
+Action q2: "insert into vendors (date, trans, symbol, qty, price) values ('2015-01-03', 'KEEP','SUN', '700.0',' 13.0')"
+------------------------------------------------------------
+------------------------------------------------------------
+content:
+    2018-09-08  GET    APPLE  2000.0  35.0  
+    2006-03-28  BUY    IBM    1000.0  45.0  
+    2006-04-06  SELL   IBM    500.0   53.0  
+    2006-04-05  BUY    MSFT   1000.0  72.0  
+    2017-02-07  POST   ORACLE 4000.0  22.0  
+    2006-01-05  BUY    RHAT   100.0   35.14 
+    2015-01-03  KEEP   SUN    700.0   13.0  
+~/Python/lite_db$ python lite_db.py add 2018-05-21  SELL    CANON  1234.0  65.0 
+Added
+------------------------------------------------------------
+------------------------------------------------------------
+content:
+    2018-09-08  GET    APPLE  2000.0  35.0  
+    2018-05-21  SELL   CANON  1234.0 65.0   
+    2006-03-28  BUY    IBM    1000.0  45.0  
+    2006-04-06  SELL   IBM    500.0   53.0  
+    2006-04-05  BUY    MSFT   1000.0  72.0  
+    2017-02-07  POST   ORACLE 4000.0  22.0  
+    2006-01-05  BUY    RHAT   100.0   35.14 
+    2015-01-03  KEEP   SUN    700.0   13.0 
+~/Python/lite_db$ 
