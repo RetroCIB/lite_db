@@ -148,11 +148,12 @@ def main():
     elif cmd == 'add':
         if len(args) < 6:
             usage()
-        date = args[1]
-        trans = args[2]
-        symbol = args[3]
-        qty =  args[4]
-        price = args[5]
+        date, trans, symbol, qty, price = args[1:]
+#        date = args[1]
+#        trans = args[2]
+#        symbol = args[3]
+#        qty =  args[4]
+#        price = args[5]
         addtodb(date, trans, symbol, qty, price)
     elif cmd == 'delete':
         if len(args) < 2:
