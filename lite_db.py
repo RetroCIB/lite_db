@@ -66,6 +66,7 @@ def showdb1(cursor):
     description = cursor.description
     hr()
     rows = cursor.fetchall()
+    print " date  : trans : symbol : qty : price :" 
     hr()
     print 'content:'
     for row in rows:
