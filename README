@@ -16,7 +16,9 @@ Usage:    python lite_db.py command [arg1, ... ]
     python lite_db.py show
     python lite_db.py add 2006-01-05 BUY IBM 100.0 35.14
     python lite_db.py delete IBM
-
+               reserved keywords: schema, find, alter ...
+               for future version 
+====================
 ~/Python/lite_db$ python lite_db.py create
 Action: create table vendors (date text, trans text, symbol text, qty text, price text)
 Action q2: "insert into vendors (date, trans, symbol, qty, price) values ('2006-01-05', 'BUY','RHAT', '100.0',' 35.14')"
