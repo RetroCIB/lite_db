@@ -1,7 +1,7 @@
 # 
 #Lite DB based on SQLite3 and Python 2.7
 #            lite version for testing purposes to creeate private DB's
-#
+#            * updated proptype http://www.davekuhlman.org   
 support@support-Lenovo-Z50-70:~/Python/lite_db$ python lite_db.py
 
 Perform operations on sqlite3 (vendors) database.
