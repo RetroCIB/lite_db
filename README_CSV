@@ -1,0 +1,3 @@
+# head -n -1 <name>  cat the 1 line of CSV
+#tail -n 2   <name>  cat the last 2 line of CSV
+#awk                 print columns of CSV 
