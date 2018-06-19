@@ -12,6 +12,16 @@ def csv_contents(sPath):
     return csv_dir
 
 #raw_input .csv file name
+def ask(psbly):
+    pstr = " Enter " + ", ".join(psbly) + " :"
+    choice = raw_input(pstr)
+    opt =  [i for i in psbly if choice in i]
+    if not len(opt) or len(opt) > 1:
+        print "You typed something wrong!"
+        return ask(psbly)
+    return "".join(opt)
+
+#raw_input .csv file name
 def _input(msg):
     return raw_input (msg)
 
@@ -31,7 +41,8 @@ def file_names(filename):
 def main():
     sDir = csv_contents(".")
     print "Enter the name of CSV file: ****.csv : "
-    sDir = _input(sDir)
+    sDir = ask(sDir)
+#    sDir = _input(sDir)
     if os.path.isfile(sDir):
         print "File has been found : ", sDir
     else:
