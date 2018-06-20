@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 
 """
-Perform operations on sqlite3 (vendors) database.
+Perform operations on sqlite3 demo DataBase (DB).
 Usage:    python lite_db.py command [arg1, ... ]
    commands:
-    	create -- create new database vendors.db.
-    	show   -- show contents of database.
-    	add    -- add or update row to/in database.  Requires 5 args (date, trans, symbol, qty, price).
-    	delete -- remove row from database.  Requires 1 arg (name).
+    	create -- create new DB vendors.db.
+    	show   -- show contents of DB.
+    	add    -- add or update row to/in DB.
+             Requires 5 args (date, trans, symbol, qty, price).
+    	delete -- remove row from DB.  Requires 1 arg (name).
    examples:
     python lite_db.py create
     python lite_db.py show
@@ -36,7 +37,6 @@ Field_defs = [
     'price text',
     ]
 
-
 def createdb():
     connection = sqlite3.connect('vendors.db')
     cursor = connection.cursor()
@@ -54,12 +54,10 @@ def createdb():
     showdb1(cursor)
     connection.close()
 
-
 def showdb():
     connection, cursor = opendb()
     showdb1(cursor)
     connection.close()
-
 
 def showdb1(cursor):
     cursor.execute("select * from vendors order by symbol")
@@ -77,7 +75,6 @@ def showdb1(cursor):
         price = row[4]
         print '    %s%s%s%s%s' % (
             date.ljust(12), trans.ljust(7), symbol.ljust(7), qty.ljust(7), price.ljust(7),)
-
 
 def addtodb(date, trans, symbol, qty, price):
     try:
@@ -103,7 +100,6 @@ def addtodb(date, trans, symbol, qty, price):
     showdb1(cursor)
     connection.close()
 
-
 def deletefromdb(name):
     connection, cursor = opendb()
     cursor.execute("select * from vendors where symbol = '%s'" % name)
@@ -117,21 +113,17 @@ def deletefromdb(name):
     showdb1(cursor)
     connection.close()
 
-
 def opendb():
     connection = sqlite3.connect("vendors.db")
     cursor = connection.cursor()
     return connection, cursor
 
-
 def hr():
     print '-' * 60
-
 
 def usage():
     print __doc__
     sys.exit(1)
-
 
 def main():
     args = sys.argv[1:]
@@ -139,26 +131,17 @@ def main():
         usage()
     cmd = args[0]
     if cmd == 'create':
-        if len(args) != 1:
-            usage()
+        if len(args) != 1: usage()
         createdb()
     elif cmd == 'show':
-        if len(args) != 1:
-            usage()
+        if len(args) != 1: usage()
         showdb()
     elif cmd == 'add':
-        if len(args) < 6:
-            usage()
+        if len(args) < 6: usage()
         date, trans, symbol, qty, price = args[1:]
-#        date = args[1]
-#        trans = args[2]
-#        symbol = args[3]
-#        qty =  args[4]
-#        price = args[5]
         addtodb(date, trans, symbol, qty, price)
     elif cmd == 'delete':
-        if len(args) < 2:
-            usage()
+        if len(args) < 2: usage()
         symbol = args[1]
         deletefromdb(symbol)
     else:
@@ -166,4 +149,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
